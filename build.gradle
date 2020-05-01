@@ -1,0 +1,37 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'org.wallet.hub'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	def seleniumVersion = '3.141.59'
+
+	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+	testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
+
+//	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver
+//	compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: seleniumVersion
+//
+//	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support
+//	compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: seleniumVersion
+
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
